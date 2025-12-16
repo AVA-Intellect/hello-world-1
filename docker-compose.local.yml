@@ -1,13 +1,14 @@
 services:
   ws:
-    image: ghcr.io/ava-intellect/hello-world-ws:latest
+    build: ./ws
     ports:
       - "8765:8765"
 
   api:
-    image: ghcr.io/ava-intellect/hello-world-api:latest
+    build: ./api
     ports:
       - "8080:8080"
     environment:
       WS_URL: "ws://ws:8765"
       WS_TIMEOUT_SEC: "3"
+
